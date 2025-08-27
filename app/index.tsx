@@ -11,7 +11,7 @@ export default function Index() {
       }}
     >
       <Text>Nameste Jiii</Text>
-      <Link href={'/about'}>About Screen</Link>
+      <Link href={'/about'}><Text>About Screen</Text></Link>
     </View>
   );
 }
