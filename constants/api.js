@@ -1,0 +1,1 @@
+export const API_URL = "https://dish-dash-rn-app-api.onrender.com";

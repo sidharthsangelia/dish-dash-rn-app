@@ -1,6 +1,6 @@
 import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
-import { FlatList, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, RefreshControl, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SignOutButton } from "@/components/SignOutButton";
 import { useEffect, useState } from "react";
 import { MealAPI } from "../../services/mealAPI";
@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../constants/colors";
 import CategoryFilter from "../../components/CategoryFilter";
 import RecipeCard from "@/components/RecpieCard";
- 
+ import LoadingSpinner from "@/components/LoadingSpinner";
 export default function Page() {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -85,13 +85,17 @@ export default function Page() {
     loadData();
   }, []);
 
-  // if (loading && !refreshing) return <LoadingSpinner message="Loading delicions recipes..." />;
+  if (loading && !refreshing) return <LoadingSpinner message="Loading delicions recipes..." />;
 
   return (
     <View style={homeStyles.container}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        // refreshControl={() => {}}
+        refreshControl={ <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={COLORS.primary}
+          />}
         contentContainerStyle={homeStyles.scrollContent}
       >
         {/*  ANIMAL ICONS */}
