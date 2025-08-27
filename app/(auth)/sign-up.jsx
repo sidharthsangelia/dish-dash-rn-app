@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function about() {
+export default function signUnScreen() {
   return (
     <View>
-      <Text>about</Text>
+      <Text>sign-up</Text>
     </View>
   )
 }
