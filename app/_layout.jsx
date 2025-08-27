@@ -4,14 +4,16 @@ import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { Slot } from "expo-router";
 import { StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import SafeScreen from "@/components/SafeScreen";
+
 
 export default function RootLayout() {
   return (
     <ClerkProvider tokenCache={tokenCache}>
-      <SafeAreaView style={{flex:1, backgroundColor: COLORS.background}}>
+      <SafeScreen>
         <Slot />
-      
-      </SafeAreaView>
+        <StatusBar barStyle={"dark-content"} />
+      </SafeScreen>
     </ClerkProvider>
   );
 }
